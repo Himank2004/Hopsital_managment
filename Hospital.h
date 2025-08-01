@@ -4,13 +4,14 @@
 #include "Patient.h"
 #include "Doctor.h"
 #include "Appointment.h"
+using namespace std;
 
 // Singleton Class for managing the entire hospital system
 class Hospital {
 private:
-    std::vector<std::shared_ptr<Patient>> patients;
-    std::vector<std::shared_ptr<Doctor>> doctors;
-    std::vector<std::shared_ptr<Appointment>> appointments;
+    vector<shared_ptr<Patient>> patients;
+    vector<shared_ptr<Doctor>> doctors;
+    vector<shared_ptr<Appointment>> appointments;
 
     // Private constructor to prevent instantiation
     Hospital() {}
@@ -26,14 +27,14 @@ public:
         return instance;
     }
     
-    void addPatient(std::shared_ptr<Patient> p);
-    void addDoctor(std::shared_ptr<Doctor> d);
+    void addPatient(shared_ptr<Patient> p);
+    void addDoctor(shared_ptr<Doctor> d);
     
-    std::shared_ptr<Patient> findPatientById(int id);
-    std::shared_ptr<Doctor> findDoctorById(int id);
-    std::shared_ptr<Doctor> findAvailableDoctor(const std::string& specialization);
+    shared_ptr<Patient> findPatientById(int id);
+    shared_ptr<Doctor> findDoctorById(int id);
+    shared_ptr<Doctor> findAvailableDoctor(const string& specialization);
     
-    void createAppointment(const std::string& date, const std::string& time, std::shared_ptr<Patient> p, std::shared_ptr<Doctor> d);
+    void createAppointment(const string& date, const string& time, shared_ptr<Patient> p, shared_ptr<Doctor> d);
 
     void displayAllPatients() const;
     void displayAllDoctors() const;
