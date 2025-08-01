@@ -1,77 +1,78 @@
 #include "HospitalFacade.h"
 #include "Hospital.h"
 #include <iostream>
-#include <memory> // for std::make_shared
+#include <memory> // for make_shared
+using namespace std;
 
 void HospitalFacade::registerPatient() {
-    std::string name, gender, condition;
+    string name, gender, condition;
     int age, id;
-    std::cout << "\tEnter patient name: ";
-    std::getline(std::cin, name);
-    std::cout << "\tEnter age: ";
-    std::cin >> age;
-    std::cin.ignore();
-    std::cout << "\tEnter gender: ";
-    std::getline(std::cin, gender);
-    std::cout << "\tEnter patient ID: ";
-    std::cin >> id;
-    std::cin.ignore();
-    std::cout << "\tEnter patient's condition: ";
-    std::getline(std::cin, condition);
+    cout << "\tEnter patient name: ";
+    getline(cin, name);
+    cout << "\tEnter age: ";
+    cin >> age;
+    cin.ignore();
+    cout << "\tEnter gender: ";
+    getline(cin, gender);
+    cout << "\tEnter patient ID: ";
+    cin >> id;
+    cin.ignore();
+    cout << "\tEnter patient's condition: ";
+    getline(cin, condition);
 
-    auto patient = std::make_shared<Patient>(name, age, gender, id, condition);
+    auto patient = make_shared<Patient>(name, age, gender, id, condition);
     Hospital::getInstance().addPatient(patient);
-    std::cout << "\n\t!! PATIENT ADDED SUCCESSFULLY !!\n";
+    cout << "\n\t!! PATIENT ADDED SUCCESSFULLY !!\n";
 }
 
 void HospitalFacade::registerDoctor() {
-    std::string name, gender, specialization;
+    string name, gender, specialization;
     int age, id;
-    std::cout << "\tEnter doctor name: ";
-    std::getline(std::cin, name);
-    std::cout << "\tEnter age: ";
-    std::cin >> age;
-    std::cin.ignore();
-    std::cout << "\tEnter gender: ";
-    std::getline(std::cin, gender);
-    std::cout << "\tEnter doctor ID: ";
-    std::cin >> id;
-    std::cin.ignore();
-    std::cout << "\tEnter specialization: ";
-    std::getline(std::cin, specialization);
+    cout << "\tEnter doctor name: ";
+    getline(cin, name);
+    cout << "\tEnter age: ";
+    cin >> age;
+    cin.ignore();
+    cout << "\tEnter gender: ";
+    getline(cin, gender);
+    cout << "\tEnter doctor ID: ";
+    cin >> id;
+    cin.ignore();
+    cout << "\tEnter specialization: ";
+    getline(cin, specialization);
     
-    auto doctor = std::make_shared<Doctor>(name, age, gender, id, specialization);
+    auto doctor = make_shared<Doctor>(name, age, gender, id, specialization);
     Hospital::getInstance().addDoctor(doctor);
-    std::cout << "\n\t!! DOCTOR ADDED SUCCESSFULLY !!\n";
+    cout << "\n\t!! DOCTOR ADDED SUCCESSFULLY !!\n";
 }
 
 void HospitalFacade::scheduleAppointment() {
-    std::cout << "\tEnter Patient ID for appointment: ";
+    cout << "\tEnter Patient ID for appointment: ";
     int patientId;
-    std::cin >> patientId;
-    std::cin.ignore();
+    cin >> patientId;
+    cin.ignore();
 
     auto patient = Hospital::getInstance().findPatientById(patientId);
     if (!patient) {
-        std::cout << "\tPatient not found!\n";
+        cout << "\tPatient not found!\n";
         return;
     }
 
-    std::cout << "\tEnter required doctor specialization (matches patient condition): ";
-    std::string specialization;
-    std::getline(std::cin, specialization);
+    cout << "\tEnter required doctor specialization (matches patient condition): ";
+    string specialization;
+    getline(cin, specialization);
 
     auto doctor = Hospital::getInstance().findAvailableDoctor(specialization);
     if (!doctor) {
-        std::cout << "\tNo available doctor with that specialization found.\n";
+        cout << "\tNo available doctor with that specialization found.\n";
         return;
     }
 
-    std::string date, time;
-    std::cout << "\tEnter appointment date (YYYY-MM-DD): ";
-    std::getline(std::cin, date);
-    std::cout << "\tEnter appointment time (HH:MM): ";
-    std::getline(std::cin, time);
+    string date, time;
+    cout << "\tEnter appointment date (YYYY-MM-DD): ";
+    getline(cin, date);
+    cout << "\tEnter appointment time (HH:MM): ";
+    getline(cin, time);
 
     Hospital::getInstance().createAppointment(date, time, patient, doctor);
 }
