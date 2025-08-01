@@ -1,16 +1,17 @@
 #include <iostream>
 #include "HospitalFacade.h"
+using namespace std;
 
 void showMenu() {
-    std::cout << "\n\tWELCOME TO HOSPITAL MANAGEMENT SYSTEM\n";
-    std::cout << "\t1. Register Patient\n";
-    std::cout << "\t2. Register Doctor\n";
-    std::cout << "\t3. Schedule Appointment\n";
-    std::cout << "\t4. View Patients Database\n";
-    std::cout << "\t5. View Doctors Database\n";
-    std::cout << "\t6. View All Appointments\n";
-    std::cout << "\t7. Exit\n";
-    std::cout << "\n\tEnter your choice: ";
+     cout << "\n\tWELCOME TO HOSPITAL MANAGEMENT SYSTEM\n";
+     cout << "\t1. Register Patient\n";
+     cout << "\t2. Register Doctor\n";
+     cout << "\t3. Schedule Appointment\n";
+     cout << "\t4. View Patients Database\n";
+     cout << "\t5. View Doctors Database\n";
+     cout << "\t6. View All Appointments\n";
+     cout << "\t7. Exit\n";
+     cout << "\n\tEnter your choice: ";
 }
 
 int main() {
@@ -19,8 +20,8 @@ int main() {
 
     while (true) {
         showMenu();
-        std::cin >> choice;
-        std::cin.ignore(); // Consume the newline character
+         cin >> choice;
+         cin.ignore(); // Consume the newline character
 
         switch (choice) {
             case 1:
@@ -42,14 +43,14 @@ int main() {
                 facade.viewAllAppointments();
                 break;
             case 7:
-                std::cout << "\n\t!! Exiting the system. Thank you! !!\n";
+                 cout << "\n\t!! Exiting the system. Thank you! !!\n";
                 return 0;
             default:
-                std::cout << "\n\tInvalid choice! Please try again.\n";
+                 cout << "\n\tInvalid choice! Please try again.\n";
                 break;
         }
-        std::cout << "\n\tPress Enter to continue...";
-        std::cin.get();
+         cout << "\n\tPress Enter to continue...";
+         cin.get();
     }
 
     return 0;
