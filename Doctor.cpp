@@ -1,18 +1,19 @@
 #include "Doctor.h"
 #include "Patient.h" // Include full definition here
+using namespace std;
 
-Doctor::Doctor(std::string name, int age, std::string gender, int id, std::string specialization)
+Doctor::Doctor(string name, int age, string gender, int id, string specialization)
     : Person(name, age, gender), doctorId(id), specialization(specialization), assignedPatient(nullptr) {}
 
 void Doctor::displayInfo() const {
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Age: " << age << std::endl;
-    std::cout << "Gender: " << gender << std::endl;
-    std::cout << "Doctor ID: " << doctorId << std::endl;
-    std::cout << "Specialization: " << specialization << std::endl;
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "Gender: " << gender << endl;
+    cout << "Doctor ID: " << doctorId << endl;
+    cout << "Specialization: " << specialization << endl;
 }
 
-void Doctor::assignPatient(std::shared_ptr<Patient> patient) {
+void Doctor::assignPatient(shared_ptr<Patient> patient) {
     assignedPatient = patient;
 }
 
@@ -23,9 +24,9 @@ bool Doctor::isAvailable() const {
 
 void Doctor::displayAssignedPatientInfo() const {
     if (isAvailable()) {
-        std::cout << "Doctor is available." << std::endl;
+        cout << "Doctor is available." << endl;
     } else {
-        std::cout << "Assigned Patient: " << assignedPatient->getName() << std::endl;
+        cout << "Assigned Patient: " << assignedPatient->getName() << endl;
     }
 }
 
@@ -33,6 +34,6 @@ int Doctor::getDoctorId() const {
     return doctorId;
 }
 
-std::string Doctor::getSpecialization() const {
+string Doctor::getSpecialization() const {
     return specialization;
 }
